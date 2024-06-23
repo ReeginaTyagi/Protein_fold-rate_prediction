@@ -1,2 +1,2 @@
-# Protein-fold-rate-prediction
-Machine Learning models to predict protein fold-rates
+# Protein fold-rate prediction
+Extracted features from protein sequences using Pfeature and collected 48 amino acids' physicochemical and thermodynamical properties and separately applied Graph Signal Processing to protein PDB files that were collected from protein data bank to represent protein structures also performed Molecular Dynamics simulations with Amber23 and built and trained ML models for accurate folding rate predictions and integrated sequence data and simulation results.
