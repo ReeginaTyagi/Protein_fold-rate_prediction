@@ -1,0 +1,21 @@
+parm protein.hmass.parm7     # Load topology
+trajin prod.crd                # Load trajectory
+
+# Define a variable to accumulate total potential energy
+set TOTAL_PE = 0.0               
+
+# Loop through each frame in the trajectory
+!loop 1 500                     # Adjust loop range if your trajectory has a different number of frames
+  energy potential out temp.dat # Calculate potential energy (writes to temporary file)
+  @TEMP = load temp.dat          # Load temporary file into variable TEMP
+  @TOTAL_PE = @TOTAL_PE + @TEMP[1] # Add potential energy to total (assuming potential energy value is on line 1)
+  delete temp.dat                # Delete temporary file
+endloop                         
+
+# Calculate average potential energy
+set AVG_PE = @TOTAL_PE / 500     # Adjust divisor based on actual number of frames
+
+# Print average potential energy to console
+print AVG_PE
+
+run 
